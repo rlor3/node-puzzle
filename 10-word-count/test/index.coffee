@@ -40,3 +40,18 @@ describe '10-word-count', ->
   # !!!!!
   # Make the above tests pass and add more tests!
   # !!!!!
+
+  it 'should count lines', (done) ->
+    input = "Fun\nPuzzle"
+    expected = words: 2, lines: 2
+    helper input, expected, done
+
+  it 'should count CamelCase word as multiple words', (done) ->
+    input = 'FunPuzzle'
+    expected = words: 2, lines: 1
+    helper input, expected, done
+  
+  it 'should count all capitals as one word', (done) ->
+    input = 'FUNPUZZLE'
+    expected = words: 1, lines: 1
+    helper input, expected, done
